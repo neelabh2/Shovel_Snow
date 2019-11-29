@@ -4,4 +4,6 @@
     <string name="options_button">Options</string>
     <string name="shop_button">Shop</string>
     <string name="exit_button">Exit</string>
+    <string name="shovels_title">Shovels</string>
+    <string name="backgrounds_title">Backgrounds</string>
 </resources>

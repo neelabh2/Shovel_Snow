@@ -2,12 +2,14 @@ package com.example.shovelsnow;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
 /**
  * Displays and allows the user to play the game.
+ * Displays buttons for navigating to the shop and exiting the game.
  */
 public class GameActivity extends AppCompatActivity {
 
@@ -39,6 +41,7 @@ public class GameActivity extends AppCompatActivity {
 
         // Set onClickListeners for all buttons.
         gameButton.setOnClickListener(unused -> gameButtonClicked());
+        shopButton.setOnClickListener(unused -> shopButtonClicked());
         exitButton.setOnClickListener(unused -> exitButtonClicked());
 
         // Call updateUI to set initial UI.
@@ -59,6 +62,13 @@ public class GameActivity extends AppCompatActivity {
     private void gameButtonClicked() {
         score += 1;
         updateUI();
+    }
+
+    /**
+     * Starts ShopActivity when shopButton is clicked.
+     */
+    private void shopButtonClicked() {
+        startActivity(new Intent(this, ShopActivity.class));
     }
 
     /**

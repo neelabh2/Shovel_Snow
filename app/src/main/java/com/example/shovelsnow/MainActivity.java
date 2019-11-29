@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Set onClickListener for all buttons.
         startButton.setOnClickListener(unused -> startButtonClicked());
+        optionsButton.setOnClickListener(unused -> optionsButtonClicked());
     }
 
     /**
@@ -40,6 +41,6 @@ public class MainActivity extends AppCompatActivity {
      * Starts optionsActivity when optionsButton is clicked.
      */
     private void optionsButtonClicked() {
-        return;
+        startActivity(new Intent(this, OptionsActivity.class));
     }
 }
