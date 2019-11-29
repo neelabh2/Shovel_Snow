@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Shovel Snow</string>
+    <string name="start_button">Start</string>
+    <string name="options_button">Options</string>
 </resources>
