@@ -2,4 +2,6 @@
     <string name="app_name">Shovel Snow</string>
     <string name="start_button">Start</string>
     <string name="options_button">Options</string>
+    <string name="shop_button">Shop</string>
+    <string name="exit_button">Exit</string>
 </resources>
