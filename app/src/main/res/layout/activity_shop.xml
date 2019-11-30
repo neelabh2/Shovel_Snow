@@ -7,8 +7,15 @@
         android:id="@+id/shopExitButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
         android:text="@string/exit_button"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <TextView
+        android:id="@+id/shopScoreText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <ScrollView

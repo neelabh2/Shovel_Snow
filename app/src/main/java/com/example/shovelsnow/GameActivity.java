@@ -49,6 +49,28 @@ public class GameActivity extends AppCompatActivity {
     }
 
     /**
+     * @return the user's current score.
+     */
+    public static int getScore() {
+        return score;
+    }
+
+    /**
+     * Attempts to reduce score by a cost. Used to reduce score when
+     * buying items. Score cannot drop below zero.
+     * @param cost the cost of the item the user is trying to buy.
+     * @return true if cost was not greater than score and score was reduced.
+     */
+    public static boolean buyItem(final int cost) {
+        if (cost > score) {
+            return false;
+        } else {
+            score -= cost;
+            return true;
+        }
+    }
+
+    /**
      * Updates the GameActivity UI.
      */
     private void updateUI() {
