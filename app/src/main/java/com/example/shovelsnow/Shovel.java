@@ -21,4 +21,11 @@ public class Shovel extends ShopItem {
         super(setName, setDescription, setPrice, setState);
         shovelPower = setShovelPower;
     }
+
+    /**
+     * @return this shovel's power.
+     */
+    public int getShovelPower() {
+        return shovelPower;
+    }
 }

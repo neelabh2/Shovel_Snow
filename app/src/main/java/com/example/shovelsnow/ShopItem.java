@@ -68,4 +68,12 @@ public abstract class ShopItem {
     public int getState() {
         return state;
     }
+
+    /**
+     * Give the item a new state.
+     * @param newState the item's new state.
+     */
+    public void setState(final int newState) {
+        state = newState;
+    }
 }

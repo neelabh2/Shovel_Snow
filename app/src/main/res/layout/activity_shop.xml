@@ -28,6 +28,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/shovelsListTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/shovels_title"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
             <LinearLayout
                 android:id="@+id/shovelsList"
                 android:layout_width="match_parent"
@@ -35,28 +43,21 @@
                 android:layout_marginBottom="30dp"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/shovelsListTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/shovels_title"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/backgroundsListTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/backgrounds_title"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <LinearLayout
                 android:id="@+id/backgroundsList"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/backgroundsListTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/backgrounds_title"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             </LinearLayout>
 

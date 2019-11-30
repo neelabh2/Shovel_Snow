@@ -49,6 +49,15 @@ public class GameActivity extends AppCompatActivity {
     }
 
     /**
+     * Called by android when this activity is resumed.
+     */
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateUI();
+    }
+
+    /**
      * @return the user's current score.
      */
     public static int getScore() {
@@ -82,7 +91,7 @@ public class GameActivity extends AppCompatActivity {
      * is clicked.
      */
     private void gameButtonClicked() {
-        score += 1;
+        score += ShopActivity.getPower();
         updateUI();
     }
 
