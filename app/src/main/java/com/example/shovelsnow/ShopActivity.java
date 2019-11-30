@@ -19,6 +19,20 @@ public class ShopActivity extends AppCompatActivity {
     private TextView shopScoreText;
 
     /**
+     * An array of the shovels listed in the shop.
+     */
+    private final Shovel[] shovels = {
+            new Shovel("Your Hand", "x1 shoveling power",
+                    0, 2, 1),
+            new Shovel("Rusty Shovel", "x10 shoveling power",
+                    15, 0, 10),
+            new Shovel("Premium Shovel", "x100 shoveling power",
+                    150, 0, 100),
+            new Shovel("Snowblower", "x1000 shoveling power",
+                    1500, 0, 1000)
+    };
+
+    /**
      * Called by android when this activity is created.
      * @param savedInstanceState unused.
      */

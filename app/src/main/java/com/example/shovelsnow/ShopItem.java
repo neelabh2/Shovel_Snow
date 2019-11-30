@@ -21,9 +21,51 @@ public abstract class ShopItem {
     private int price;
 
     /**
-     * The state of the item (if it is not bought, bought, or equipped).
+     * The state of the item (if it is for sale (0), bought (1),
+     * or equipped (2).
      */
     private int state;
 
+    /**
+     * Creates a new ShopItem.
+     * @param setName the item's name.
+     * @param setDescription the item's description.
+     * @param setPrice the item's price.
+     * @param setState the initial state of the item.
+     */
+    public ShopItem(final String setName, final String setDescription,
+                    final int setPrice, final int setState) {
+        name = setName;
+        description = setDescription;
+        price = setPrice;
+        state = setState;
+    }
 
+    /**
+     * @return this item's name.
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @return this item's description.
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * @return this item's price.
+     */
+    public int getPrice() {
+        return price;
+    }
+
+    /**
+     * @return this item's state.
+     */
+    public int getState() {
+        return state;
+    }
 }
