@@ -6,4 +6,6 @@
     <string name="exit_button">Exit</string>
     <string name="shovels_title">Shovels</string>
     <string name="backgrounds_title">Backgrounds</string>
+    <string name="volume_up">Volume Up</string>
+    <string name="volume_down">Volume Down</string>
 </resources>
