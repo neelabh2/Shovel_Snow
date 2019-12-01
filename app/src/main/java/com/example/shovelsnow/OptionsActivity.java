@@ -50,10 +50,11 @@ public class OptionsActivity extends AppCompatActivity {
         volumeUp.setOnClickListener(unused -> generalManager.adjustVolume(AudioManager.ADJUST_RAISE, 1));
         volumeDown.setOnClickListener(unused -> generalManager.adjustVolume(AudioManager.ADJUST_LOWER, 1));
 
-        //not sure if we'll be able to change the background image so no work on that here just yet.
+        //not sure if we'll be able to change the background image so no work on that here just yet, besides adding a spinner for it.
 
         //do we want to add different kinds of weather? That's an option, but I guess we'll have to know more about bitmaps first
-        //I think that's it though.
+
+        //Need to make it so you can select different shovels.
 
     }
 

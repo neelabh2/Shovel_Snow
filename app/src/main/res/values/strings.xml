@@ -8,4 +8,6 @@
     <string name="backgrounds_title">Backgrounds</string>
     <string name="volume_up">Volume Up</string>
     <string name="volume_down">Volume Down</string>
+    <string name="background_spinner">Background</string>
+    <string name="shovel_spinner">Shovel</string>
 </resources>
