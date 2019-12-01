@@ -3,12 +3,15 @@ package com.example.shovelsnow;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.widget.Button;
 
-import java.io.IOException;
+/**
+ * MAKE SURE TO CHANGE THE XML FILE TO THE PROPER BACKGROUND IMAGE
+ * might also want to try with an ImageView - maybe we can change that on the fly?
+ * otherwise we're stuck with one image. Also not sure if that'll be in the background.
+ */
 
 /**
  * App launches to this activity.

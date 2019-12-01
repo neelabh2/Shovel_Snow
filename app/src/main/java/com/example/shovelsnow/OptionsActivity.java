@@ -50,6 +50,11 @@ public class OptionsActivity extends AppCompatActivity {
         volumeUp.setOnClickListener(unused -> generalManager.adjustVolume(AudioManager.ADJUST_RAISE, 1));
         volumeDown.setOnClickListener(unused -> generalManager.adjustVolume(AudioManager.ADJUST_LOWER, 1));
 
+        //not sure if we'll be able to change the background image so no work on that here just yet.
+
+        //do we want to add different kinds of weather? That's an option, but I guess we'll have to know more about bitmaps first
+        //I think that's it though.
+
     }
 
     /**
