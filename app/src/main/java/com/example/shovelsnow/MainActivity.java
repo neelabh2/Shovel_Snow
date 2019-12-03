@@ -8,12 +8,6 @@ import android.os.Bundle;
 import android.widget.Button;
 
 /**
- * MAKE SURE TO CHANGE THE XML FILE TO THE PROPER BACKGROUND IMAGE
- * might also want to try with an ImageView - maybe we can change that on the fly?
- * otherwise we're stuck with one image. Also not sure if that'll be in the background.
- */
-
-/**
  * App launches to this activity.
  * Displays the app title and a button for navigating to GameActivity.
  */
@@ -42,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         optionsButton.setOnClickListener(unused -> optionsButtonClicked());
 
         //not sure why I can't reference R.raw
+
         titleMusic = MediaPlayer.create(this, R.raw.bensound_thelounge);
         titleMusic.start();
     }
