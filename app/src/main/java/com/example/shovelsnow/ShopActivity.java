@@ -52,7 +52,7 @@ public class ShopActivity extends AppCompatActivity {
     /**
      * An array of the backgrounds listed in the shop.
      */
-    private static final Background[] BACKGROUNDS = {
+    public static final Background[] BACKGROUNDS = {
             new Background("The Quad", "x1 snowfall",
                     0, 2),
             new Background("CS 125", "x10 snowfall",

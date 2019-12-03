@@ -3,9 +3,14 @@ package com.example.shovelsnow;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import static com.example.shovelsnow.ShopActivity.BACKGROUNDS;
 
 /**
  * Displays and allows the user to play the game.
@@ -43,6 +48,8 @@ public class GameActivity extends AppCompatActivity {
         gameButton.setOnClickListener(unused -> gameButtonClicked());
         shopButton.setOnClickListener(unused -> shopButtonClicked());
         exitButton.setOnClickListener(unused -> exitButtonClicked());
+
+
 
         // Call updateUI to set initial UI.
         updateUI();
@@ -84,6 +91,22 @@ public class GameActivity extends AppCompatActivity {
      */
     private void updateUI() {
         scoreText.setText(Integer.toString(score));
+        //change the background Image
+        ImageView background = findViewById(R.id.backgroundImage);
+        //make a list of background images
+
+        //one of these images is too large!
+        Integer[] listOfImages = {R.drawable.uiucbackground, R.drawable.cs125background, R.drawable.geoffbackground};
+
+        int index = 0;
+        for (Background backgroundItem : BACKGROUNDS) {
+            if (backgroundItem.getState() == ItemStatusID.EQUIPPED) {
+                Bitmap bImage = BitmapFactory.decodeResource(this.getResources(), listOfImages[index]);
+                background.setImageBitmap(bImage);
+                break;
+            }
+            index++;
+        }
     }
 
     /**
