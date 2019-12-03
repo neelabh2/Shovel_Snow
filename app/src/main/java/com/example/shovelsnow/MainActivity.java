@@ -11,6 +11,8 @@ import android.widget.Button;
  * App launches to this activity.
  * Displays the app title and a button for navigating to GameActivity.
  */
+
+//need to
 public class MainActivity extends AppCompatActivity {
 
     /**
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         //not sure why I can't reference R.raw
 
-        titleMusic = MediaPlayer.create(this, R.raw.bensound_thelounge);
+        titleMusic = MediaPlayer.create(this, R.raw.bensoundthelounge);
         titleMusic.start();
     }
 
@@ -45,8 +47,6 @@ public class MainActivity extends AppCompatActivity {
      * Starts GameActivity when startButton is clicked.
      */
     private void startButtonClicked() {
-        titleMusic.release();
-        titleMusic = null;
         startActivity(new Intent(this, GameActivity.class));
     }
 
@@ -54,8 +54,6 @@ public class MainActivity extends AppCompatActivity {
      * Starts optionsActivity when optionsButton is clicked.
      */
     private void optionsButtonClicked() {
-        titleMusic.release();
-        titleMusic = null;
         startActivity(new Intent(this, OptionsActivity.class));
     }
 }
