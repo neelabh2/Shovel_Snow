@@ -36,7 +36,7 @@ public class GameActivity extends AppCompatActivity {
     /**
      * The ImageView that displays the snow.
      */
-    private ImageView snow;
+    private static ImageView snow;
 
     /**
      * Called by android when this activity is created.
@@ -136,5 +136,13 @@ public class GameActivity extends AppCompatActivity {
      */
     private void exitButtonClicked() {
         finish();
+    }
+
+    /**
+     * Returns the snow ImageView.
+     * @return snow ImageView
+     */
+    public static ImageView getSnow() {
+        return snow;
     }
 }

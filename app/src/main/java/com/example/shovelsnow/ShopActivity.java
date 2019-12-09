@@ -225,7 +225,7 @@ public class ShopActivity extends AppCompatActivity {
 
     /**
      * Equips an item by changing its state when an equip button is clicked.
-     * Unequips all other items by chaning their state.
+     * Unequips all other items by changing their state.
      * @param shopItem the item to equip.
      */
     private void equipButtonClicked(final ShopItem shopItem) {
@@ -240,6 +240,11 @@ public class ShopActivity extends AppCompatActivity {
                 }
             }
         } else if (shopItem instanceof Background) {
+
+            //reset the bitmap here?
+
+            GameActivity.getSnow().setAlpha(getSnowAlpha());
+            
             for (Background background : BACKGROUNDS) {
                 if (background.equals(shopItem)) {
                     continue;
