@@ -42,7 +42,9 @@ public class ShopActivity extends AppCompatActivity {
             new Shovel("Premium Shovel", "x100 shovel power",
                     150, 0, 100),
             new Shovel("Snowblower", "x1000 shovel power",
-                    1500, 0, 1000)
+                    1500, 0, 1000),
+            new Shovel("Bulldozer", "x10000 shovel\npower",
+                    15000, 0, 10000)
     };
 
     /**
@@ -50,11 +52,11 @@ public class ShopActivity extends AppCompatActivity {
      */
     private static final Background[] BACKGROUNDS = {
             new Background("The Quad", "x1 snowfall",
-                    0, 2, R.drawable.uiucbackground, 1),
+                    0, 2, R.drawable.uiucbackground, 10),
             new Background("CS 125", "x10 snowfall",
-                    100, 0, R.drawable.cs125background, 10),
+                    1000, 0, R.drawable.cs125background, 100),
             new Background("Challen", "x100 snowfall",
-                    10000, 0, R.drawable.geoffbackground, 100)
+                    10000, 0, R.drawable.geoffbackground, 1000)
     };
 
     /**
@@ -240,11 +242,6 @@ public class ShopActivity extends AppCompatActivity {
                 }
             }
         } else if (shopItem instanceof Background) {
-
-            //reset the bitmap here?
-
-            GameActivity.getSnow().setAlpha(getSnowAlpha());
-            
             for (Background background : BACKGROUNDS) {
                 if (background.equals(shopItem)) {
                     continue;
