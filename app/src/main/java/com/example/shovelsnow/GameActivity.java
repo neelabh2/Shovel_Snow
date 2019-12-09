@@ -7,9 +7,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 
 /**
  * Displays and allows the user to play the game.
@@ -109,6 +111,15 @@ public class GameActivity extends AppCompatActivity {
         background.setImageBitmap(bImage);
         snow.setImageBitmap(ShopActivity.getSnowBitmap());
         snow.setAlpha(ShopActivity.getSnowAlpha());
+
+
+        //notify user if snow is depleted
+        TextView completedText = findViewById(R.id.completed);
+        if (ShopActivity.getSnowAlpha() <= 0) {
+            completedText.setVisibility(View.VISIBLE);
+        } else {
+            completedText.setVisibility(View.GONE);
+        }
     }
 
     /**
@@ -116,11 +127,18 @@ public class GameActivity extends AppCompatActivity {
      * when the snow ImageView is clicked.
      */
     private void snowClicked() {
+        if (ShopActivity.getSnowAlpha() <= 0) {
+            return;
+        }
         score += ShopActivity.getPower();
         MediaPlayer shovelSound = MediaPlayer.create(GameActivity.this,
                 R.raw.snowshovel1);
         shovelSound.start();
         ShopActivity.shovelSnow();
+
+        //this isn't showing
+        //added dependency on the snackbar package - might want to revert later
+
         updateUI();
     }
 

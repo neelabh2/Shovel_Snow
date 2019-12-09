@@ -56,8 +56,8 @@ public class Snow {
      * @param snowFall how difficult shoveling is.
      */
     public void shovelSnow(final int shovelPower, final int snowFall) {
-        alpha -= shovelPower / snowFall;
-        if (alpha < 0) {
+        alpha -= (shovelPower / snowFall);
+        if (alpha <= 0) {
             alpha = 0;
         }
     }

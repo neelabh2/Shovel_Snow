@@ -10,4 +10,5 @@
     <string name="volume_down">Volume Down</string>
     <string name="background_spinner">Background</string>
     <string name="shovel_spinner">Shovel</string>
+    <string name="completed">Snow Depleted</string>
 </resources>
