@@ -3,6 +3,8 @@ package com.example.shovelsnow;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.widget.Button;
@@ -37,10 +39,14 @@ public class MainActivity extends AppCompatActivity {
         startButton.setOnClickListener(unused -> startButtonClicked());
         optionsButton.setOnClickListener(unused -> optionsButtonClicked());
 
-        //not sure why I can't reference R.raw
-
+        // Create the game music.
         titleMusic = MediaPlayer.create(this, R.raw.bensoundthelounge);
         titleMusic.start();
+
+        //Setup the bitmaps for the backgrounds and snow.
+        for (Background background : ShopActivity.getBackgrounds()) {
+            background.setBitmap(getBitmap(background.getResource()));
+        }
     }
 
     /**
@@ -55,5 +61,13 @@ public class MainActivity extends AppCompatActivity {
      */
     private void optionsButtonClicked() {
         startActivity(new Intent(this, OptionsActivity.class));
+    }
+
+    /**
+     * @param resource An image resource.
+     * @return The bitmap of that image resource.
+     */
+    private Bitmap getBitmap(final int resource) {
+        return BitmapFactory.decodeResource(this.getResources(), resource);
     }
 }

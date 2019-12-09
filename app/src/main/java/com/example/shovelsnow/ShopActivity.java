@@ -1,5 +1,6 @@
 package com.example.shovelsnow;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -31,11 +32,6 @@ public class ShopActivity extends AppCompatActivity {
     private LinearLayout backgroundsList;
 
     /**
-     * The user's current shoveling power.
-     */
-    private static int power = 1;
-
-    /**
      * An array of the shovels listed in the shop.
      */
     private static final Shovel[] SHOVELS = {
@@ -52,14 +48,24 @@ public class ShopActivity extends AppCompatActivity {
     /**
      * An array of the backgrounds listed in the shop.
      */
-    public static final Background[] BACKGROUNDS = {
+    private static final Background[] BACKGROUNDS = {
             new Background("The Quad", "x1 snowfall",
-                    0, 2),
+                    0, 2, R.drawable.uiucbackground, 1),
             new Background("CS 125", "x10 snowfall",
-                    100, 0),
+                    100, 0, R.drawable.cs125background, 10),
             new Background("Challen", "x100 snowfall",
-                    10000, 0)
+                    10000, 0, R.drawable.geoffbackground, 100)
     };
+
+    /**
+     * The user's current shovel.
+     */
+    private static Shovel currentShovel = SHOVELS[0];
+
+    /**
+     * The current game background.
+     */
+    private static Background currentBackground = BACKGROUNDS[0];
 
     /**
      * Called by android when this activity is created.
@@ -89,7 +95,43 @@ public class ShopActivity extends AppCompatActivity {
      * @return the current shovel power.
      */
     public static int getPower() {
-        return power;
+        return currentShovel.getShovelPower();
+    }
+
+    /**
+     * @return the current background resource file.
+     */
+    public static int getBackroundResource() {
+        return currentBackground.getResource();
+    }
+
+    /**
+     * @return the current snow bitmap.
+     */
+    public static Bitmap getSnowBitmap() {
+        return currentBackground.getSnow().getBitmap();
+    }
+
+    /**
+     * @return the current snow alpha level.
+     */
+    public static int getSnowAlpha() {
+        return currentBackground.getSnow().getAlpha();
+    }
+
+    /**
+     * Reduces the alpha level of the snow.
+     */
+    public static void shovelSnow() {
+        currentBackground.getSnow().shovelSnow(currentShovel.getShovelPower(),
+                currentBackground.getSnowFall());
+    }
+
+    /**
+     * @return the list of backgrounds.
+     */
+    public static Background[] getBackgrounds() {
+        return BACKGROUNDS;
     }
 
     /**
@@ -129,7 +171,7 @@ public class ShopActivity extends AppCompatActivity {
             } else if (shovel.getState() == ItemStatusID.EQUIPPED) {
                 buyButton.setText("In Use");
                 //Set the current shovel power.
-                power = shovel.getShovelPower();
+                currentShovel = shovel;
             }
 
             //Add the shovelChunk to the shovelsList.
@@ -159,6 +201,8 @@ public class ShopActivity extends AppCompatActivity {
                         equipButtonClicked(background));
             } else if (background.getState() == ItemStatusID.EQUIPPED) {
                 buyButton.setText("In Use");
+                //Set the current background resource file.
+                currentBackground = background;
             }
 
             //Add the background chunk to the backgroundsList.

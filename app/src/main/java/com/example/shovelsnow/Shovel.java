@@ -15,7 +15,7 @@ public class Shovel extends ShopItem {
      * @param setState the shovel's state.
      * @param setShovelPower the shovel's power.
      */
-    public Shovel(final String setName, final String setDescription,
+    Shovel(final String setName, final String setDescription,
                   final int setPrice, final int setState,
                   final int setShovelPower) {
         super(setName, setDescription, setPrice, setState);

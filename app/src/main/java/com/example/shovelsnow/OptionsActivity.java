@@ -2,22 +2,17 @@ package com.example.shovelsnow;
 
 import android.content.Context;
 import android.media.AudioManager;
-import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 /**
- * Allows the user to modify parts of the game.
+ * Allows the user to modify the volume level.
  * Displays a button that exits OptionsActivity.
  */
 public class OptionsActivity extends AppCompatActivity {
-
-    /**
-     * Music that plays in the options activity.
-     */
 
     /**
      * Called by android when this activity is created.
@@ -32,22 +27,59 @@ public class OptionsActivity extends AppCompatActivity {
         Button exitOptionsButton = findViewById(R.id.exitOptionsButton);
         exitOptionsButton.setOnClickListener(unused -> exitOptionsClicked());
 
-
-        //creating the audiomanager and button references
-        AudioManager generalManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        //Setup Volume buttons.
         Button volumeUp = findViewById(R.id.volumeUp);
         Button volumeDown = findViewById(R.id.volumeDown);
+        volumeUp.setOnClickListener(unused -> volumeButtonsClicked(true));
+        volumeDown.setOnClickListener(unused -> volumeButtonsClicked(false));
 
-        //this might just be adjusting the whole phone's audio, not just the app
-        /*maybe create a textview with a number representing the volume?
-            it would need to remain constant even after the app is closed
-            have it increase/decrease on button press
-         */
-        volumeUp.setOnClickListener(unused -> generalManager.adjustVolume(AudioManager.ADJUST_RAISE, 1));
-        volumeDown.setOnClickListener(unused -> generalManager.adjustVolume(AudioManager.ADJUST_LOWER, 1));
+        //Set initial UI.
+        updateUI();
+    }
 
-        //do we want to add different kinds of weather? That's an option, but I guess we'll have to know more about bitmaps first
+    /**
+     * Adjusts the volume when volume buttons are clicked.
+     * @param increase if the volume is increasing or decreasing.
+     */
+    private void volumeButtonsClicked(final boolean increase) {
+        final double increment = 0.1;
+        //creating the audiomanager
+        AudioManager generalManager = (AudioManager)
+                getSystemService(Context.AUDIO_SERVICE);
+        //Find the current and maximum volume.
+        int currentVolume = generalManager.getStreamVolume(AudioManager
+                .STREAM_MUSIC);
+        int maximumVolume = generalManager.getStreamMaxVolume(AudioManager
+                .STREAM_MUSIC);
+        //Calculate the new volume
+        double change = maximumVolume * increment;
+        int newVolume;
+        if (increase) {
+            newVolume = currentVolume + (int) change;
+            if (newVolume > maximumVolume) {
+                newVolume = maximumVolume;
+            }
+        } else {
+            newVolume = currentVolume - (int) change;
+            if (newVolume < 0) {
+                newVolume = 0;
+            }
+        }
+        //Set the new volume and update the UI.
+        generalManager.setStreamVolume(AudioManager.STREAM_MUSIC, newVolume, 0);
+        updateUI();
+    }
 
+    private void updateUI() {
+        //creating the audiomanager
+        AudioManager generalManager = (AudioManager)
+                getSystemService(Context.AUDIO_SERVICE);
+        //Find the current volume.
+        int currentVolume = generalManager.getStreamVolume(AudioManager
+                .STREAM_MUSIC);
+        //Update the volumeText.
+        TextView volumeText = findViewById(R.id.volumeText);
+        volumeText.setText(Integer.toString(currentVolume));
     }
 
     /**

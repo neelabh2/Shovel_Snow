@@ -7,12 +7,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import static com.example.shovelsnow.ShopActivity.BACKGROUNDS;
 
 /**
  * Displays and allows the user to play the game.
@@ -32,6 +29,16 @@ public class GameActivity extends AppCompatActivity {
     private TextView scoreText;
 
     /**
+     * The ImageView that displays the background.
+     */
+    private ImageView background;
+
+    /**
+     * The ImageView that displays the snow.
+     */
+    private ImageView snow;
+
+    /**
      * Called by android when this activity is created.
      * @param savedInstanceState unused.
      */
@@ -40,33 +47,22 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        // Setup gameButton, shopButton, exitButton, and scoreText.
-        Button gameButton = findViewById(R.id.gameButton);
+        // Setup shopButton, exitButton, scoreText, and background.
         Button shopButton = findViewById(R.id.shopButton);
         Button exitButton = findViewById(R.id.exitButton);
         scoreText = findViewById(R.id.scoreText);
+        background = findViewById(R.id.backgroundImage);
 
         // Set onClickListeners for all buttons.
-        gameButton.setOnClickListener(unused -> gameButtonClicked());
         shopButton.setOnClickListener(unused -> shopButtonClicked());
         exitButton.setOnClickListener(unused -> exitButtonClicked());
 
-
+        //Setup the snow ImageView and its listeners.
+        snow = findViewById(R.id.snowImage);
+        snow.setOnClickListener(unused -> snowClicked());
 
         // Call updateUI to set initial UI.
         updateUI();
-
-        //switch this to whatever you call the snow ImageView
-        ImageView snow = findViewById(R.id.backgroundImage);
-
-        snow.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(final View v) {
-                MediaPlayer shovelSound = MediaPlayer.create(GameActivity.this, R.raw.snowshovel1);
-                shovelSound.start();
-            }
-        });
     }
 
     /**
@@ -104,31 +100,27 @@ public class GameActivity extends AppCompatActivity {
      * Updates the GameActivity UI.
      */
     private void updateUI() {
+        //Update the score.
         scoreText.setText(Integer.toString(score));
-        //change the background Image
-        ImageView background = findViewById(R.id.backgroundImage);
-        //make a list of background images
 
-        //one of these images is too large!
-        Integer[] listOfImages = {R.drawable.uiucbackground, R.drawable.cs125background, R.drawable.geoffbackground};
-
-        int index = 0;
-        for (Background backgroundItem : BACKGROUNDS) {
-            if (backgroundItem.getState() == ItemStatusID.EQUIPPED) {
-                Bitmap bImage = BitmapFactory.decodeResource(this.getResources(), listOfImages[index]);
-                background.setImageBitmap(bImage);
-                break;
-            }
-            index++;
-        }
+        //Change the background.
+        Bitmap bImage = BitmapFactory.decodeResource(this.getResources(),
+                ShopActivity.getBackroundResource());
+        background.setImageBitmap(bImage);
+        snow.setImageBitmap(ShopActivity.getSnowBitmap());
+        snow.setAlpha(ShopActivity.getSnowAlpha());
     }
 
     /**
-     * Increases score by the amount specified in ShopActivity when gameButton
-     * is clicked.
+     * Increases score and removes snow from the UI
+     * when the snow ImageView is clicked.
      */
-    private void gameButtonClicked() {
+    private void snowClicked() {
         score += ShopActivity.getPower();
+        MediaPlayer shovelSound = MediaPlayer.create(GameActivity.this,
+                R.raw.snowshovel1);
+        shovelSound.start();
+        ShopActivity.shovelSnow();
         updateUI();
     }
 
